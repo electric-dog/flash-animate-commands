@@ -1,4 +1,11 @@
-function checkSourcePath(){
+/********************************************************************************
+ * Name			: Check-FileSourcePath
+ * Description	: Checks all library items for external file paths
+ * Author		: Vladin M. Mitov
+ * License		: MIT
+ ********************************************************************************/
+ 
+(function(){
 	
 	var doc = fl.getDocumentDOM();
 	
@@ -32,6 +39,4 @@ function checkSourcePath(){
 	fl.outputPanel.clear();
 	fl.trace( doc.path );
 	fl.trace( out.join("\n") + sep + "DONE! " + i + " item" + t + " checked." );
-}
-
-checkSourcePath();
+})();
