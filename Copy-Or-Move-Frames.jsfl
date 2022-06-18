@@ -1,12 +1,19 @@
 /********************************************************************************
  * Name			: Copy-Or-Move-Frames
- * Description	: Copy selected frames to a new layer.
+ * Description		: Copy selected frames to a new layer.
  * Author		: Vladin M. Mitov
  * License		: MIT
  ********************************************************************************/
 (function(){
 			
-	var tml = fl.getDocumentDOM().getTimeline();
+	var doc = fl.getDocumentDOM();
+
+	if( ! doc ){
+		alert( "No document open." );
+		return;
+	}
+	
+	var tml = doc.getTimeline();
 	var sel = tml.getSelectedFrames();
 	
 	if( sel.length != 3 ){
@@ -29,10 +36,10 @@
 
 	if( action === "copy" ){
 		tml.copyFrames( startFrame, endFrame );
-		newLayerName = "Copy of " + myLayer.name + " ( "+ startFrame + "-" + endFrame + " )";
+		newLayerName = "Copy of " + myLayer.name + " ( "+ (startFrame+1) + "-" + endFrame + " )";
 	}else if( action === "move" ){
 		tml.cutFrames( startFrame, endFrame );
-		newLayerName = "Moved from " + myLayer.name + " ( "+ startFrame + "-" + endFrame + " )";
+		newLayerName = "Moved from " + myLayer.name + " ( "+ (startFrame+1) + "-" + endFrame + " )";
 	}
 		
 		
